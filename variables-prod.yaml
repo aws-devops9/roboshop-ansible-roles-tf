@@ -1,0 +1,10 @@
+MONGODB_HOST: mongodb-prod.learndevops.space
+REDIS_HOST: redis-prod.learndevops.space
+USER_HOST: user-prod.learndevops.space
+CATALOGUE_HOST: catalogue-prod.learndevops.space
+CART_HOST: cart-prod.learndevops.space
+MYSQL_HOST: mysql-prod.learndevops.space
+RABBITMQ_HOST: rabbitmq-prod.learndevops.space
+SHIPPING_HOST: shipping-prod.learndevops.space
+DISPATCH_HOST: dispatch-prod.learndevops.space
+PAYMENT_HOST: payment-prod.learndevops.space

@@ -1,0 +1,22 @@
+- name: Download the Earlang Script
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+  
+- name: Download rabbitmq repo 
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+
+- name: Install Rabbit mq
+  ansible.builtin.package:
+    name: rabbitmq-server 
+    state: present 
+
+- name: enable and start rabbitmq 
+  ansible.builtin.service:
+    name: rabbitmq-server
+    enabled: yes  
+    state: started 
+
+- name: add user and password
+  ansible.builtin.command: "rabbitmqctl add_user {{rq_user}} {{rq_password}}"
+
+- name: set permissions to user
+  ansible.builtin.command: rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"

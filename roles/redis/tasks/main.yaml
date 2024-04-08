@@ -1,0 +1,22 @@
+- name: Install Remi Repo Release 8
+  ansible.builtin.shell: dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+
+- name: Enable redis module 
+  ansible.builtin.shell: dnf module enable redis:remi-6.2 -y
+
+- name: Install Redis
+  ansible.builtin.package:
+    name: redis
+    state: present
+
+- name: Allow remote connections
+  ansible.builtin.replace:
+    path: /etc/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Enable and start Redis
+  ansible.builtin.service:
+    name: redis
+    enabled: yes 
+    state: started
